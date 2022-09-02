@@ -10,23 +10,23 @@
                         <article class="card сart-item">
                             <header class="card__header">
                                 <h1 class="product__title">
-                                    <%= product.product.title %>
+                                    <%= product.title %>
                                 </h1>
                             </header>
                             <div class="card__image">
-                                <img src="<%= product.product.imageUrl %>" alt="<%= product.title %>">
+                                <img src="<%= product.imageUrl %>" alt="<%= product.title %>">
                             </div>
                             <div class="card__content">
                                 <h2 class="product__price">$
-                                    <%= product.product.price %>
+                                    <%= product.price %>
                                 </h2>
                                 <p class="product__qty">
-                                    QTY: <%= product.qty %>
+                                    QTY: <%= product.cartItem.quantity %>
                                 </p>
                             </div>
                             <div class="card__content">
                                 <h2 class="product__price">$
-                                    <%= product.product.price %>
+                                    <%= product.price %>
                                 </h2>
                                 <p class="product__description">
                                     <%= product.description %>
@@ -34,16 +34,17 @@
                             </div>
                             <div class="card__actions">
                                 <form action="/cart-delete-item" method="POST">
-                                    <input type="hidden" name="productId" value="<%= product.product.id%>"/>
+                                    <input type="hidden" name="productId" value="<%= product.id%>"/>
                                     <button class="btn" type="submit">Delete</button>
                                 </form>
                             </div>
                         </article>
                         <% } %>
                 </div>
-                <div class="total-price">
-                    <b>Total Price: </b><%= price%>
-                </div>
+                <form action="/orders" method="POST">
+                    <button class="btn" type="submit">Order now</button>
+                </form>
+
                 <% } else { %>
                     <h1>No Products Found!</h1>
                     <% } %>
