@@ -1,8 +1,21 @@
-const Sequelize = require("sequelize"); // import class;
+const mongodb = require("mongodb");
+const URL = 'mongodb+srv://yanatska:yoOi3mxnL5e9q9eO@cluster0.dhyuhhv.mongodb.net/?retryWrites=true&w=majority';
 
-const sequelize = new Sequelize('node-store', 'root', 'lifeisgood9632', {
-    dialect: "mysql", 
-    host: "localhost" // default
-});
+let _db;
+const MongoClient = mongodb.MongoClient;
 
-module.exports = sequelize; // database connection pool
+const mongoConnect = (callback) => {
+    return MongoClient.connect(URL)
+    .then(client => {
+        _db = client.db();
+        callback();
+    })
+    .catch(err => {
+        throw err
+    })
+};
+const getDB = () => {
+    if(_db) return _db
+    throw "No database!";
+}
+module.exports = {mongoConnect, getDB};

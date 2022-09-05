@@ -6,11 +6,11 @@
         <main>
             <ul>
                 <% for (let order of orders) { %>
-                    <li><%= order.id %></li>
+                    <li><%= order._id %></li>
                     <ul>
                         <% for (let product of order.products) { %>
                             <li>
-                                <%= product.title %>(<%= product.orderItem.quantity %>)
+                                <%= product.title %>(<%= product.quantity %>)
                             </li>
                         <% } %>
                     </ul>
