@@ -1,21 +1,9 @@
-const mongodb = require("mongodb");
-const URL = 'mongodb+srv://yanatska:yoOi3mxnL5e9q9eO@cluster0.dhyuhhv.mongodb.net/?retryWrites=true&w=majority';
+const mongoose = require('mongoose');
 
-let _db;
-const MongoClient = mongodb.MongoClient;
+const URL = 'mongodb+srv://yanatska:yoOi3mxnL5e9q9eO@cluster0.dhyuhhv.mongodb.net/shop?retryWrites=true&w=majority';
 
-const mongoConnect = (callback) => {
-    return MongoClient.connect(URL)
-    .then(client => {
-        _db = client.db();
-        callback();
-    })
-    .catch(err => {
-        throw err
-    })
+const mongooseConnect = async () => {
+    return await mongoose.connect(URL);
 };
-const getDB = () => {
-    if(_db) return _db
-    throw "No database!";
-}
-module.exports = {mongoConnect, getDB};
+
+module.exports = mongooseConnect;

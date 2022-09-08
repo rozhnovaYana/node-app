@@ -8,9 +8,9 @@
                 <% for (let order of orders) { %>
                     <li><%= order._id %></li>
                     <ul>
-                        <% for (let product of order.products) { %>
+                        <% for (let product of order.items) { %>
                             <li>
-                                <%= product.title %>(<%= product.quantity %>)
+                                <%= product.product.title %>(<%= product.quantity %>)
                             </li>
                         <% } %>
                     </ul>
