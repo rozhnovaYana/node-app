@@ -6,7 +6,7 @@
 }
 
 .product-item {
-    width: 300px;
+    width: 20rem;
     max-width: 95%;
     margin: 1rem;
 }
@@ -24,9 +24,4 @@
 
 .product__description {
     text-align: center;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
